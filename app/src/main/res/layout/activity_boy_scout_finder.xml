@@ -4,85 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".BoyScoutFinder">
 
-    <RelativeLayout
-        android:layout_width="418dp"
-        android:layout_height="733dp"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boy Scout Finder Screen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.484" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="409dp"
+        android:layout_height="50dp"
+        app:cardElevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:id="@+id/scout_troop_btn"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="340dp"
+            android:text="B"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="409dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="12dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:visibility="visible">
+        <Button
+            android:id="@+id/donation_btn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="260dp"
+            android:text="D"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/scout_troop_btn"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="340dp"
-                android:text="B"
-                app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/home_btn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:text="H"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/donation_btn"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="260dp"
-                android:text="D"
-                app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/service_project_btn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:text="S"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/home_btn"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="180dp"
-                android:text="H"
-                app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/troop_finder_btn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="T"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/service_project_btn"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:text="S"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/troop_finder_btn"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="T"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.cardview.widget.CardView>
-
-    </RelativeLayout>
-
-
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
