@@ -63,14 +63,14 @@ public class LoginActivity extends AppCompatActivity {
                 task.getResult(ApiException.class);
                 navigateToMainActivity();
             } catch (ApiException e) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), e.getStatusCode() + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     void navigateToMainActivity(){
         finish();
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
