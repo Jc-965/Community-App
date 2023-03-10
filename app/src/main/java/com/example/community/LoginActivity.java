@@ -17,6 +17,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,6 +38,11 @@ public class LoginActivity extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if(acct!=null){
+            String displayName = acct.getDisplayName();
+            User u = new User(displayName);
+            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("User");
+            db.setValue(u);
+
             navigateToMainActivity();
         }
 
