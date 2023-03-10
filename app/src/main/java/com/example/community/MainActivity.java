@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //DatabaseReference myRef = database.getReference("message");
 
-        myRef.setValue("Hello, World!");
+        //myRef.setValue("Hello, World!");
     }
 
     private void onBtnClicked(View view){

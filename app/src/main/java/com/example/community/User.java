@@ -4,6 +4,16 @@ public class User {
 
     private String name;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String email;
+
     public String getName() {
         return name;
     }
@@ -12,14 +22,14 @@ public class User {
         this.name = name;
     }
 
-    public User(String name) {
+    public User(String name, String email) {
         this.name = name;
+        this.email = email;
 
     }
 
-    //Change later on
     public User(){
-        name = "Joe";
+        name = "Sample"; email = "Sample@email.com";
     }
 
     //Profile

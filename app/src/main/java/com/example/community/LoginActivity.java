@@ -38,11 +38,6 @@ public class LoginActivity extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if(acct!=null){
-            String displayName = acct.getDisplayName();
-            User u = new User(displayName);
-            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("User");
-            db.setValue(u);
-
             navigateToMainActivity();
         }
 
@@ -68,9 +63,10 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
                 task.getResult(ApiException.class);
+                pushNewUser();
                 navigateToMainActivity();
             } catch (ApiException e) {
-                Toast.makeText(getApplicationContext(), e.getStatusCode() + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "error status code " + e.getStatusCode(), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -79,5 +75,14 @@ public class LoginActivity extends AppCompatActivity {
         finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    void pushNewUser() {
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        String displayName = acct.getDisplayName();
+        String email = acct.getEmail();
+        User u = new User(displayName, email);
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("User");
+        db.child(email.replaceAll("[.#$]" , ",")).setValue(u);
     }
 }
