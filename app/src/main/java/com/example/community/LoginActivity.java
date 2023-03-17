@@ -1,5 +1,6 @@
 package com.example.community;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,8 +18,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -63,8 +67,27 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
                 task.getResult(ApiException.class);
-                pushNewUser();
-                navigateToMainActivity();
+                GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+                String email = acct.getEmail();
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("User");
+
+                db.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChild(email.replaceAll("[.#$]" , ","))) {
+                            navigateToMainActivity();
+                        }
+                        else{
+                            pushNewUser();
+                            navigateToMainActivity();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             } catch (ApiException e) {
                 Toast.makeText(getApplicationContext(), "error status code " + e.getStatusCode(), Toast.LENGTH_SHORT).show();
             }
