@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button b = this.findViewById(R.id.troop_finder_btn);
+        ImageButton b = this.findViewById(R.id.troop_finder_btn);
         b.setOnClickListener(this::onBtnClicked);
 
         FirebaseApp.initializeApp(this);

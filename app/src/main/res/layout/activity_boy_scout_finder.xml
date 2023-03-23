@@ -73,4 +73,10 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="409dp"
+        android:layout_height="621dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="55dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
