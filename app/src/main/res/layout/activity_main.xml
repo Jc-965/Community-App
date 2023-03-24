@@ -79,7 +79,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:radius="20dp"
-        android:src="@drawable/search.png"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
