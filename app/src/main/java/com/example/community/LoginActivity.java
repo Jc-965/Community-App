@@ -42,7 +42,26 @@ public class LoginActivity extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if(acct!=null){
-            navigateToMainActivity();
+            String email = acct.getEmail();
+            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("User");
+
+            db.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.hasChild(email.replaceAll("[.#$]" , ","))) {
+                        navigateToMainActivity();
+                    }
+                    else{
+                        //do nothing
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
         }
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
